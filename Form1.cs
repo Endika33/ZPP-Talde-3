@@ -11,6 +11,10 @@ namespace ErronkaT3
             GraphicsPath camino = new GraphicsPath();
             camino.AddEllipse(Perfil.ClientRectangle);
             Perfil.Region = new Region(camino);
+
+            // Datuak atala: Java programarekin konektatuta
+            button7.Click += InportatuB_Click;   // Inportatu
+            button8.Click += EsportatuB_Click;   // Esportatu
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,6 +40,18 @@ namespace ErronkaT3
         private void panel1_Paint_1(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void InportatuB_Click(object? sender, EventArgs e)
+        {
+            using var leihoa = new InportatuForm();
+            leihoa.ShowDialog(this);
+        }
+
+        private void EsportatuB_Click(object? sender, EventArgs e)
+        {
+            using var leihoa = new EsportatuForm();
+            leihoa.ShowDialog(this);
         }
 
         private void Datuak_Click(object sender, EventArgs e)
