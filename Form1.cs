@@ -15,6 +15,7 @@ namespace ErronkaT3
             // Datuak atala: Java programarekin konektatuta
             button7.Click += InportatuB_Click;   // Inportatu
             button8.Click += EsportatuB_Click;   // Esportatu
+            button6.Click += BideojokoaB_Click;  // Bideojokoa
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -46,6 +47,11 @@ namespace ErronkaT3
         {
             using var leihoa = new InportatuForm();
             leihoa.ShowDialog(this);
+        }
+
+        private void BideojokoaB_Click(object? sender, EventArgs e)
+        {
+            BideojokoAjustes.Abiarazi(this);
         }
 
         private void EsportatuB_Click(object? sender, EventArgs e)
