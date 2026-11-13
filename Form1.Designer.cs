@@ -30,76 +30,88 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
+            btnLanaldiaBukatu = new Button();
             button8 = new Button();
             button7 = new Button();
             Datuak = new Label();
             panel3 = new Panel();
-            button6 = new Button();
-            button5 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
-            EskaeraZerrendaB = new Button();
+            btnLanaldiaHasi = new Button();
             label2 = new Label();
             label1 = new Label();
             Perfil = new PictureBox();
-            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
             panel2 = new Panel();
+            lblBezeroak = new Label();
+            dgvBezeroak = new DataGridView();
+            label3 = new Label();
+            dgvEskaerak = new DataGridView();
             panel4 = new Panel();
-            button11 = new Button();
-            button10 = new Button();
-            button9 = new Button();
+            bezeroBerria = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Perfil).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBezeroak).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEskaerak).BeginInit();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(btnLanaldiaBukatu);
             panel1.Controls.Add(button8);
             panel1.Controls.Add(button7);
             panel1.Controls.Add(Datuak);
             panel1.Controls.Add(panel3);
-            panel1.Controls.Add(button6);
-            panel1.Controls.Add(button5);
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(EskaeraZerrendaB);
+            panel1.Controls.Add(btnLanaldiaHasi);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(Perfil);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(255, 582);
+            panel1.Size = new Size(255, 679);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint_2;
+            // 
+            // btnLanaldiaBukatu
+            // 
+            btnLanaldiaBukatu.BackColor = Color.LightSalmon;
+            btnLanaldiaBukatu.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLanaldiaBukatu.Location = new Point(28, 201);
+            btnLanaldiaBukatu.Name = "btnLanaldiaBukatu";
+            btnLanaldiaBukatu.Size = new Size(174, 29);
+            btnLanaldiaBukatu.TabIndex = 14;
+            btnLanaldiaBukatu.Text = "Lanaldia bukatu";
+            btnLanaldiaBukatu.TextAlign = ContentAlignment.MiddleLeft;
+            btnLanaldiaBukatu.UseVisualStyleBackColor = false;
+            btnLanaldiaBukatu.Click += button2_Click;
             // 
             // button8
             // 
-            button8.BackColor = SystemColors.ActiveCaption;
+            button8.BackColor = SystemColors.ControlDark;
             button8.FlatAppearance.BorderSize = 0;
-            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Arial", 12F);
             button8.ForeColor = SystemColors.ControlLightLight;
-            button8.Location = new Point(38, 470);
+            button8.Location = new Point(45, 399);
             button8.Name = "button8";
-            button8.Size = new Size(175, 29);
+            button8.Size = new Size(175, 36);
             button8.TabIndex = 13;
             button8.Text = "Esportatu";
             button8.TextAlign = ContentAlignment.MiddleLeft;
             button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
             // 
             // button7
             // 
-            button7.BackColor = SystemColors.ActiveCaption;
+            button7.BackColor = SystemColors.ControlDark;
             button7.FlatAppearance.BorderSize = 0;
-            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Arial", 12F);
             button7.ForeColor = SystemColors.ControlLightLight;
-            button7.Location = new Point(38, 420);
+            button7.Location = new Point(45, 350);
             button7.Name = "button7";
-            button7.Size = new Size(175, 29);
+            button7.Size = new Size(175, 37);
             button7.TabIndex = 12;
             button7.Text = "Inportatu";
             button7.TextAlign = ContentAlignment.MiddleLeft;
@@ -108,113 +120,45 @@
             // Datuak
             // 
             Datuak.AutoSize = true;
+            Datuak.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Datuak.ForeColor = SystemColors.ControlLightLight;
             Datuak.ImageAlign = ContentAlignment.MiddleLeft;
-            Datuak.Location = new Point(41, 385);
+            Datuak.Location = new Point(23, 301);
             Datuak.Name = "Datuak";
-            Datuak.Size = new Size(52, 15);
+            Datuak.Size = new Size(183, 24);
             Datuak.TabIndex = 11;
-            Datuak.Text = "DATUAK";
+            Datuak.Text = "Datuen Kudeaketa";
             Datuak.Click += Datuak_Click;
             // 
             // panel3
             // 
             panel3.BackColor = SystemColors.ControlLightLight;
-            panel3.Location = new Point(27, 366);
+            panel3.Location = new Point(14, 283);
             panel3.Name = "panel3";
             panel3.Size = new Size(201, 1);
             panel3.TabIndex = 10;
             // 
-            // button6
+            // btnLanaldiaHasi
             // 
-            button6.BackColor = SystemColors.ActiveCaption;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.ForeColor = SystemColors.ControlLightLight;
-            button6.Location = new Point(38, 320);
-            button6.Name = "button6";
-            button6.Size = new Size(175, 29);
-            button6.TabIndex = 9;
-            button6.Text = "Bideojokoa";
-            button6.TextAlign = ContentAlignment.MiddleLeft;
-            button6.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            button5.BackColor = SystemColors.ActiveCaption;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.ForeColor = SystemColors.ControlLightLight;
-            button5.Location = new Point(38, 270);
-            button5.Name = "button5";
-            button5.Size = new Size(175, 29);
-            button5.TabIndex = 8;
-            button5.Text = "Mezuak";
-            button5.TextAlign = ContentAlignment.MiddleLeft;
-            button5.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.ActiveCaption;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = SystemColors.ControlLightLight;
-            button3.Location = new Point(38, 220);
-            button3.Name = "button3";
-            button3.Size = new Size(175, 29);
-            button3.TabIndex = 6;
-            button3.Text = "Lanaldia";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.ActiveCaption;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(38, 270);
-            button2.Name = "button2";
-            button2.Size = new Size(175, 29);
-            button2.TabIndex = 5;
-            button2.Text = "Eskera zerrenda";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ActiveCaption;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(38, 170);
-            button1.Name = "button1";
-            button1.Size = new Size(175, 29);
-            button1.TabIndex = 4;
-            button1.Text = "Bezeroak";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // EskaeraZerrendaB
-            // 
-            EskaeraZerrendaB.BackColor = SystemColors.ActiveCaption;
-            EskaeraZerrendaB.FlatAppearance.BorderSize = 0;
-            EskaeraZerrendaB.FlatStyle = FlatStyle.Flat;
-            EskaeraZerrendaB.ForeColor = SystemColors.ControlLightLight;
-            EskaeraZerrendaB.Location = new Point(38, 120);
-            EskaeraZerrendaB.Name = "EskaeraZerrendaB";
-            EskaeraZerrendaB.Size = new Size(175, 29);
-            EskaeraZerrendaB.TabIndex = 3;
-            EskaeraZerrendaB.Text = "Eskera zerrenda";
-            EskaeraZerrendaB.TextAlign = ContentAlignment.MiddleLeft;
-            EskaeraZerrendaB.UseVisualStyleBackColor = false;
-            EskaeraZerrendaB.Click += EskaeraZerrendaB_Click;
+            btnLanaldiaHasi.BackColor = Color.YellowGreen;
+            btnLanaldiaHasi.FlatAppearance.BorderSize = 0;
+            btnLanaldiaHasi.Font = new Font("Arial", 12F);
+            btnLanaldiaHasi.ForeColor = SystemColors.ControlText;
+            btnLanaldiaHasi.Location = new Point(27, 156);
+            btnLanaldiaHasi.Name = "btnLanaldiaHasi";
+            btnLanaldiaHasi.Size = new Size(175, 29);
+            btnLanaldiaHasi.TabIndex = 14;
+            btnLanaldiaHasi.Text = "Lanaldia hasi";
+            btnLanaldiaHasi.TextAlign = ContentAlignment.MiddleLeft;
+            btnLanaldiaHasi.UseVisualStyleBackColor = false;
+            btnLanaldiaHasi.Click += btnLanaldiaHasi_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 8F);
             label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(38, 85);
+            label2.Location = new Point(41, 106);
             label2.Name = "label2";
             label2.Size = new Size(62, 13);
             label2.TabIndex = 2;
@@ -224,11 +168,11 @@
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F);
+            label1.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(90, 47);
+            label1.Location = new Point(109, 46);
             label1.Name = "label1";
-            label1.Size = new Size(84, 28);
+            label1.Size = new Size(92, 24);
             label1.TabIndex = 1;
             label1.Text = "Euskanp";
             label1.Click += label1_Click;
@@ -236,97 +180,148 @@
             // Perfil
             // 
             Perfil.Image = (Image)resources.GetObject("Perfil.Image");
-            Perfil.Location = new Point(41, 42);
+            Perfil.Location = new Point(45, 47);
             Perfil.Name = "Perfil";
-            Perfil.Size = new Size(40, 40);
-            Perfil.SizeMode = PictureBoxSizeMode.Zoom;
+            Perfil.Size = new Size(52, 50);
+            Perfil.SizeMode = PictureBoxSizeMode.StretchImage;
             Perfil.TabIndex = 0;
             Perfil.TabStop = false;
+            Perfil.Click += Perfil_Click;
             // 
-            // button4
+            // button5
             // 
-            button4.BackColor = SystemColors.ActiveCaption;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(37, 42);
-            button4.Name = "button4";
-            button4.Size = new Size(175, 29);
-            button4.TabIndex = 7;
-            button4.Text = "Panel nagusia";
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
+            button5.BackColor = Color.DodgerBlue;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.Font = new Font("Arial", 12F);
+            button5.ForeColor = SystemColors.ControlLightLight;
+            button5.Location = new Point(241, 34);
+            button5.Name = "button5";
+            button5.Size = new Size(175, 29);
+            button5.TabIndex = 8;
+            button5.Text = "Mezuak";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click_1;
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.Orange;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.Font = new Font("Arial", 12F);
+            button6.ForeColor = SystemColors.ControlLightLight;
+            button6.Location = new Point(447, 34);
+            button6.Name = "button6";
+            button6.Size = new Size(175, 29);
+            button6.TabIndex = 9;
+            button6.Text = "Bideojokoa";
+            button6.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
             panel2.BackColor = SystemColors.ControlLight;
+            panel2.Controls.Add(lblBezeroak);
+            panel2.Controls.Add(dgvBezeroak);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(dgvEskaerak);
             panel2.Controls.Add(panel4);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(255, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(938, 582);
+            panel2.Size = new Size(1072, 679);
             panel2.TabIndex = 1;
+            panel2.Paint += panel2_Paint;
+            // 
+            // lblBezeroak
+            // 
+            lblBezeroak.AutoSize = true;
+            lblBezeroak.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblBezeroak.Location = new Point(715, 98);
+            lblBezeroak.Name = "lblBezeroak";
+            lblBezeroak.Size = new Size(112, 27);
+            lblBezeroak.TabIndex = 11;
+            lblBezeroak.Text = "Bezeroak";
+            lblBezeroak.Click += label4_Click;
+            // 
+            // dgvBezeroak
+            // 
+            dgvBezeroak.AllowUserToAddRows = false;
+            dgvBezeroak.AllowUserToResizeColumns = false;
+            dgvBezeroak.AllowUserToResizeRows = false;
+            dgvBezeroak.BackgroundColor = SystemColors.ControlLightLight;
+            dgvBezeroak.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBezeroak.Location = new Point(454, 127);
+            dgvBezeroak.MultiSelect = false;
+            dgvBezeroak.Name = "dgvBezeroak";
+            dgvBezeroak.ReadOnly = true;
+            dgvBezeroak.ScrollBars = ScrollBars.Vertical;
+            dgvBezeroak.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBezeroak.Size = new Size(617, 550);
+            dgvBezeroak.TabIndex = 3;
+            dgvBezeroak.CellContentClick += dgvBezeroak_CellContentClick;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Arial", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(109, 99);
+            label3.Name = "label3";
+            label3.Size = new Size(217, 27);
+            label3.TabIndex = 10;
+            label3.Text = "Bezeroen eskaerak";
+            // 
+            // dgvEskaerak
+            // 
+            dgvEskaerak.AllowUserToAddRows = false;
+            dgvEskaerak.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvEskaerak.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEskaerak.GridColor = SystemColors.MenuHighlight;
+            dgvEskaerak.Location = new Point(0, 128);
+            dgvEskaerak.Name = "dgvEskaerak";
+            dgvEskaerak.ReadOnly = true;
+            dgvEskaerak.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEskaerak.Size = new Size(439, 550);
+            dgvEskaerak.TabIndex = 2;
             // 
             // panel4
             // 
             panel4.BackColor = SystemColors.ActiveCaption;
-            panel4.Controls.Add(button11);
-            panel4.Controls.Add(button10);
-            panel4.Controls.Add(button9);
-            panel4.Controls.Add(button4);
+            panel4.Controls.Add(bezeroBerria);
+            panel4.Controls.Add(button5);
+            panel4.Controls.Add(button6);
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(938, 82);
+            panel4.Size = new Size(1083, 82);
             panel4.TabIndex = 0;
             // 
-            // button11
+            // bezeroBerria
             // 
-            button11.BackColor = SystemColors.ActiveCaption;
-            button11.FlatAppearance.BorderSize = 0;
-            button11.FlatStyle = FlatStyle.Flat;
-            button11.Location = new Point(731, 42);
-            button11.Name = "button11";
-            button11.Size = new Size(175, 29);
-            button11.TabIndex = 10;
-            button11.Text = "Mezuak";
-            button11.UseVisualStyleBackColor = false;
-            // 
-            // button10
-            // 
-            button10.BackColor = SystemColors.ActiveCaption;
-            button10.FlatAppearance.BorderSize = 0;
-            button10.FlatStyle = FlatStyle.Flat;
-            button10.Location = new Point(240, 42);
-            button10.Name = "button10";
-            button10.Size = new Size(175, 29);
-            button10.TabIndex = 9;
-            button10.Text = "Bezero berria";
-            button10.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            button9.BackColor = SystemColors.ActiveCaption;
-            button9.FlatAppearance.BorderSize = 0;
-            button9.FlatStyle = FlatStyle.Flat;
-            button9.Location = new Point(503, 42);
-            button9.Name = "button9";
-            button9.Size = new Size(175, 29);
-            button9.TabIndex = 8;
-            button9.Text = "Bezeroaren panela";
-            button9.UseVisualStyleBackColor = false;
+            bezeroBerria.BackColor = Color.Azure;
+            bezeroBerria.FlatAppearance.BorderSize = 0;
+            bezeroBerria.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bezeroBerria.Location = new Point(31, 34);
+            bezeroBerria.Name = "bezeroBerria";
+            bezeroBerria.Size = new Size(175, 29);
+            bezeroBerria.TabIndex = 9;
+            bezeroBerria.Text = "Bezero berria";
+            bezeroBerria.UseVisualStyleBackColor = false;
+            bezeroBerria.Click += button10_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1193, 582);
+            ClientSize = new Size(1327, 679);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Form1";
             Text = "Idazkaritza";
+            Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Perfil).EndInit();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBezeroak).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEskaerak).EndInit();
             panel4.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -339,10 +334,7 @@
         private Label label1;
         private Button EskaeraZerrendaB;
         private Label label2;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button btnLanaldiaHasi;
         private Button button6;
         private Button button5;
         private Panel panel3;
@@ -351,7 +343,12 @@
         private Label Datuak;
         private Panel panel4;
         private Button button11;
-        private Button button10;
+        private Button bezeroBerria;
         private Button button9;
+        private DataGridView dgvEskaerak;
+        private Button btnLanaldiaBukatu;
+        private Label label3;
+        private DataGridView dgvBezeroak;
+        private Label lblBezeroak;
     }
 }

@@ -1,96 +1,26 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace ErronkaT3
 {
     /// <summary>"Esportatu" leihoa: probintzia eta herria aukeratu eta Java programarekin CSV eta XML sortzen ditu.</summary>
-    public class EsportatuForm : Form
+    public partial class EsportatuForm : Form
     {
-        private readonly ComboBox probintziaCombo = new() { Name = "ProbintziaCombo", DropDownStyle = ComboBoxStyle.DropDownList };
-        private readonly ComboBox herriaCombo = new() { Name = "HerriaCombo", DropDownStyle = ComboBoxStyle.DropDownList };
-        private readonly TextBox irteeraBox = new() { Name = "IrteeraBox" };
-        private readonly Button arakatuB = new() { Name = "ArakatuB" };
-        private readonly Button esportatuB = new() { Name = "EsportatuB" };
-        private readonly Button karpetaIrekiB = new() { Name = "KarpetaIrekiB" };
-        private readonly Button itxiB = new() { Name = "ItxiB" };
-        private readonly ProgressBar aurrerapena = new() { Name = "Aurrerapena" };
-        private readonly Label egoera = new() { Name = "Egoera" };
-        private readonly TextBox log = new() { Name = "Log" };
-
         private List<Herria> herriak = new();
         private bool kargatuta;
         private bool okupatuta;
 
+     
         public EsportatuForm()
         {
-            Text = "Datuak esportatu";
-            ClientSize = new Size(620, 440);
-            StartPosition = FormStartPosition.CenterParent;
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            MaximizeBox = false;
-            MinimizeBox = false;
-            Font = new Font("Segoe UI", 9F);
-            BackColor = Color.FromArgb(245, 245, 245);
+            InitializeComponent(); 
+            formatuaCombo.Items.AddRange(new object[] { "CSV eta XML", "CSV", "XML" });
+            formatuaCombo.SelectedIndex = 0;
 
-            var titulua = new Label
-            {
-                Text = "Datuak esportatu",
-                Font = new Font("Segoe UI", 14F, FontStyle.Bold),
-                AutoSize = true,
-                Location = new Point(20, 16)
-            };
-            var probintziaEtiketa = new Label { Text = "Probintzia:", AutoSize = true, Location = new Point(22, 72) };
-            var herriaEtiketa = new Label { Text = "Herria:", AutoSize = true, Location = new Point(22, 106) };
-            var irteeraEtiketa = new Label { Text = "Irteera karpeta:", AutoSize = true, Location = new Point(22, 140) };
-
-            probintziaCombo.Location = new Point(130, 68);
-            probintziaCombo.Size = new Size(300, 24);
-            herriaCombo.Location = new Point(130, 102);
-            herriaCombo.Size = new Size(300, 24);
-
-            irteeraBox.Location = new Point(130, 136);
-            irteeraBox.Size = new Size(430, 24);
             irteeraBox.Text = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Euskanp", "esportazioak");
-            arakatuB.Text = "...";
-            arakatuB.Location = new Point(566, 135);
-            arakatuB.Size = new Size(32, 26);
-
-            InportatuForm.Estiloa(esportatuB, "Esportatu");
-            esportatuB.Location = new Point(22, 178);
-            InportatuForm.Estiloa(karpetaIrekiB, "Karpeta ireki");
-            karpetaIrekiB.Location = new Point(162, 178);
-            karpetaIrekiB.Enabled = false;
-            InportatuForm.Estiloa(itxiB, "Itxi");
-            itxiB.Location = new Point(302, 178);
-            itxiB.Size = new Size(100, 34);
-            itxiB.BackColor = Color.FromArgb(220, 220, 220);
-            itxiB.ForeColor = Color.Black;
-
-            aurrerapena.Style = ProgressBarStyle.Marquee;
-            aurrerapena.MarqueeAnimationSpeed = 30;
-            aurrerapena.Location = new Point(420, 186);
-            aurrerapena.Size = new Size(178, 18);
-            aurrerapena.Visible = false;
-
-            egoera.AutoSize = true;
-            egoera.Location = new Point(22, 224);
-
-            log.Multiline = true;
-            log.ReadOnly = true;
-            log.ScrollBars = ScrollBars.Vertical;
-            log.Font = new Font("Consolas", 9F);
-            log.BackColor = Color.White;
-            log.Location = new Point(22, 250);
-            log.Size = new Size(576, 168);
-
-            Controls.AddRange(new Control[]
-            {
-                titulua, probintziaEtiketa, herriaEtiketa, irteeraEtiketa,
-                probintziaCombo, herriaCombo, irteeraBox, arakatuB,
-                esportatuB, karpetaIrekiB, itxiB, aurrerapena, egoera, log
-            });
-            CancelButton = itxiB;
             esportatuB.Enabled = false;
+            karpetaIrekiB.Enabled = false;
+            CancelButton = itxiB;
 
             probintziaCombo.SelectedIndexChanged += (_, _) => HerriakEguneratu();
             arakatuB.Click += (_, _) => KarpetaAukeratu();
@@ -202,6 +132,9 @@ namespace ErronkaT3
                 return;
             }
 
+            
+            int formatua = formatuaCombo.SelectedIndex;
+
             Okupatuta(true);
             log.Clear();
             karpetaIrekiB.Enabled = false;
@@ -209,11 +142,23 @@ namespace ErronkaT3
             try
             {
                 string argumentuak = "esportatu " + probintzia.Kodea + " " + herria.Kodea + " \"--irteera=" + irteera + "\"";
+
                 JavaEmaitza emaitza = await JavaProzesua.ExekutatuAsync(JavaAjustes.Karpeta, argumentuak, Idatzi);
 
                 switch (emaitza.IrteeraKodea)
                 {
                     case JavaProzesua.Ondo:
+                        // El Java genera los dos formatos: se elimina el que no se ha elegido
+                        try
+                        {
+                            if (formatua == 1)
+                                foreach (var f in Directory.GetFiles(irteera, "*.xml")) File.Delete(f);
+                            else if (formatua == 2)
+                                foreach (var f in Directory.GetFiles(irteera, "*.csv")) File.Delete(f);
+                        }
+                        catch (IOException) { }
+                        catch (UnauthorizedAccessException) { }
+
                         egoera.Text = "Esportazioa amaituta.";
                         karpetaIrekiB.Enabled = true;
                         string laburpena = emaitza.Irteera
@@ -222,11 +167,13 @@ namespace ErronkaT3
                         MessageBox.Show(this, laburpena + "\n\nFitxategiak: " + irteera, "Euskanp",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
+
                     case JavaProzesua.DaturikEz:
                         egoera.Text = "Ez dago kanpinik.";
                         MessageBox.Show(this, "Ez dago kanpinik aukeratutako lekuan.", "Euskanp",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
+
                     default:
                         egoera.Text = "Errorea esportatzean.";
                         MessageBox.Show(this, "Errorea esportatzean:\n\n" + JavaProzesua.AkatsMezua(emaitza), "Euskanp",
@@ -240,4 +187,4 @@ namespace ErronkaT3
             }
         }
     }
-}
+    }
