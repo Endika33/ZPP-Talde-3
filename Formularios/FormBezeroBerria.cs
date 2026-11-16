@@ -19,7 +19,7 @@ namespace ErronkaT3
         public FormBezeroBerria()
         {
             InitializeComponent();
-            cbxMota.Items.AddRange(new object[] { "denda", "autoka", "bungalow" });
+            cbxMota.Items.AddRange(new object[] { "Denda", "Autokarabana", "Bungalow" });
             cbxMota.SelectedIndex = 0;
         }
 
@@ -35,7 +35,12 @@ namespace ErronkaT3
             Abizenak = txtAbizenak.Text.Trim();
             Emaila = txtEmaila.Text.Trim();
             Telefonoa = txtTelefonoa.Text.Trim();
-            Mota = cbxMota.SelectedItem?.ToString() ?? "denda";
+            Mota = cbxMota.SelectedIndex switch
+            {
+                1 => "autoka",
+                2 => "bungalow",
+                _ => "denda"
+            };
             DialogResult = DialogResult.OK;
         }
     }

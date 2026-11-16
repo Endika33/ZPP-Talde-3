@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ErronkaT3
+namespace ErronkaT3.Modelos
 {
    public class BezeroDatuak
     {

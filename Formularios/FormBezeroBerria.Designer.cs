@@ -40,10 +40,6 @@
             txtEmaila = new TextBox();
             lblTelefonoa = new Label();
             txtTelefonoa = new TextBox();
-            lblHerria = new Label();
-            textBox1 = new TextBox();
-            lblPostKodea = new Label();
-            txtPostKodea = new TextBox();
             SuspendLayout();
             // 
             // lblIzena
@@ -94,7 +90,7 @@
             btnGorde.BackColor = SystemColors.MenuHighlight;
             btnGorde.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGorde.ForeColor = SystemColors.ButtonHighlight;
-            btnGorde.Location = new Point(23, 560);
+            btnGorde.Location = new Point(23, 417);
             btnGorde.Name = "btnGorde";
             btnGorde.Size = new Size(199, 32);
             btnGorde.TabIndex = 5;
@@ -150,48 +146,11 @@
             txtTelefonoa.Size = new Size(199, 23);
             txtTelefonoa.TabIndex = 11;
             // 
-            // lblHerria
-            // 
-            lblHerria.AutoSize = true;
-            lblHerria.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblHerria.Location = new Point(27, 390);
-            lblHerria.Name = "lblHerria";
-            lblHerria.Size = new Size(45, 16);
-            lblHerria.TabIndex = 12;
-            lblHerria.Text = "Herria:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(23, 409);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(199, 23);
-            textBox1.TabIndex = 13;
-            // 
-            // lblPostKodea
-            // 
-            lblPostKodea.AutoSize = true;
-            lblPostKodea.Location = new Point(26, 465);
-            lblPostKodea.Name = "lblPostKodea";
-            lblPostKodea.Size = new Size(74, 15);
-            lblPostKodea.TabIndex = 14;
-            lblPostKodea.Text = "Posta kodea:";
-            // 
-            // txtPostKodea
-            // 
-            txtPostKodea.Location = new Point(23, 483);
-            txtPostKodea.Name = "txtPostKodea";
-            txtPostKodea.Size = new Size(199, 23);
-            txtPostKodea.TabIndex = 15;
-            // 
             // FormBezeroBerria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(251, 614);
-            Controls.Add(txtPostKodea);
-            Controls.Add(lblPostKodea);
-            Controls.Add(textBox1);
-            Controls.Add(lblHerria);
+            ClientSize = new Size(251, 470);
             Controls.Add(txtTelefonoa);
             Controls.Add(lblTelefonoa);
             Controls.Add(txtEmaila);
@@ -225,9 +184,5 @@
         private TextBox txtEmaila;
         private Label lblTelefonoa;
         private TextBox txtTelefonoa;
-        private Label lblHerria;
-        private TextBox textBox1;
-        private Label lblPostKodea;
-        private TextBox txtPostKodea;
     }
 }

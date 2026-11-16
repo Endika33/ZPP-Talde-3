@@ -1,6 +1,8 @@
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
 using System.Collections.Concurrent;
+using ErronkaT3.Modelos;
+using ErronkaT3;
 
 namespace ErronkaT3
 {
@@ -13,9 +15,9 @@ namespace ErronkaT3
         private BlockingCollection<Eskaera> kola = new();
         private ManualResetEventSlim lanaldia = new(false);
         private BindingList<BezeroDatuak> bezeroak = new();
-        public void GehituEskaera(string bezeroa, string mota, int segundos)
+        public void GehituEskaera(int bezeroId, string bezeroa, string mota, int segundos)
         {
-            var e = new Eskaera { Bezeroa = bezeroa, Mota = mota, Segundos = segundos };
+            var e = new Eskaera { BezeroId = bezeroId, Bezeroa = bezeroa, Mota = mota, Segundos = segundos };
             eskaerak.Add(e);
             kola.Add(e);
         }
@@ -31,13 +33,32 @@ namespace ErronkaT3
 
         private void Lan(string langilea)
         {
-            foreach (var e in kola.GetConsumingEnumerable())
+            while (true)
             {
                 lanaldia.Wait();
 
+                if (!kola.TryTake(out var e, 200))
+                    continue;
+
+                if (e.Ezeztatuta) continue;   
+
                 Invoke(() => { e.Langilea = langilea; e.Egoera = "Egiten"; });
                 Thread.Sleep(e.Segundos * 1000);
-                Invoke(() => e.Egoera = "Eginda");
+
+                Invoke(() =>
+                {
+                    e.Egoera = "Eginda";
+                    if (e.Ezeztatuta) eskaerak.Remove(e);  
+                });
+            }
+        }
+        private void BezeroarenEskaerakKendu(int id)
+        {
+            foreach (var e in eskaerak.Where(x => x.BezeroId == id).ToList())
+            {
+                e.Ezeztatuta = true;
+                if (e.Egoera != "Egiten")
+                    eskaerak.Remove(e);
             }
         }
         private void BezeroakKargatu()
@@ -59,9 +80,12 @@ namespace ErronkaT3
             dgvEskaerak.DataSource = eskaerak;
             dgvEskaerak.Columns["Bezeroa"].Width = 80;
             dgvEskaerak.Columns["Mota"].Width = 80;
-            dgvEskaerak.Columns["Segundos"].Width = 80;
+            dgvEskaerak.Columns["Segundos"].HeaderText = "Segunduak";
             dgvEskaerak.Columns["Langilea"].Width = 80;
             dgvEskaerak.Columns["Egoera"].Width = 80;
+            dgvEskaerak.Columns["Ezeztatuta"].Visible = false;
+            dgvEskaerak.Columns["BezeroId"].Visible = false;
+            
 
             dgvBezeroak.DataSource = bezeroak;
             BezeroakKargatu();
@@ -126,6 +150,12 @@ namespace ErronkaT3
         }
         private void button10_Click(object sender, EventArgs e)
         {
+            if (!lanaldia.IsSet)
+            {
+                MessageBox.Show("Lanaldia ez da hasi. Ezin da bezero berrik erregistratu.", "Oharra");
+                return;
+            }
+
             using var f = new FormBezeroBerria();
             if (f.ShowDialog(this) != DialogResult.OK) return;
 
@@ -135,8 +165,7 @@ namespace ErronkaT3
                 Abizenak = f.Abizenak,
                 Emaila = f.Emaila,
                 Telefonoa = f.Telefonoa,
-                ostatuMota = f.Mota,
-
+                ostatuMota = f.Mota
             };
 
             try
@@ -153,7 +182,11 @@ namespace ErronkaT3
 
             var leihoa = new BezeroLehioa(this, datuak.Id, datuak.Izena, datuak.ostatuMota);
             leihoak[datuak.Id] = leihoa;
-            leihoa.FormClosed += (s, ev) => leihoak.Remove(datuak.Id);
+            leihoa.FormClosed += (s, ev) =>
+            {
+                leihoak.Remove(datuak.Id);
+                BezeroarenEskaerakKendu(datuak.Id);
+            };
             leihoa.Show(this);
         }
 

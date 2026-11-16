@@ -1,13 +1,15 @@
 ﻿using System.ComponentModel;
 
-namespace ErronkaT3
+namespace ErronkaT3.Modelos
 {
     public class Eskaera : INotifyPropertyChanged
     {
+        public int BezeroId { get; set; }
         public string Bezeroa { get; set; } = "";
         public string Mota { get; set; } = "";
         public int Segundos { get; set; }
 
+        public bool Ezeztatuta { get; set; }
         private string langilea = "-";
         public string Langilea
         {

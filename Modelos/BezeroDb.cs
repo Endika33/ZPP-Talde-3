@@ -1,6 +1,6 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 
-namespace ErronkaT3
+namespace ErronkaT3.Modelos
 {
     public static class BezeroDb
     {

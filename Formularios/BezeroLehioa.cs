@@ -41,24 +41,24 @@ namespace ErronkaT3
             Close();
         }
 
-        private void btnIzarak_Click(object sender, EventArgs e)
-        {
-            secretaria.GehituEskaera(izena, "Izarak", 3);
-        }
-
         private void btnEskuoihalak_Click(object sender, EventArgs e)
         {
-            secretaria.GehituEskaera(izena, "Eskuoihalak", 2);
+            secretaria.GehituEskaera(id, izena, "Eskuoihalak", 2);
+        }
+
+        private void btnIzarak_Click(object sender, EventArgs e)
+        {
+            secretaria.GehituEskaera(id, izena, "Izarak", 3);
+        }
+
+        private void btnZaborra_Click(object sender, EventArgs e)
+        {
+            secretaria.GehituEskaera(id, izena, "Zaborra", 1);
         }
 
         private void btnJatetxea_Click(object sender, EventArgs e)
         {
-            secretaria.GehituEskaera(izena, "Jatetxea", 1);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            secretaria.GehituEskaera(izena, "Zaborra", 1);
+            secretaria.GehituEskaera(id, izena, "Jatetxea", 1);
         }
 
         private void lstMezuak_SelectedIndexChanged(object sender, EventArgs e)
