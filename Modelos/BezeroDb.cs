@@ -1,5 +1,9 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 
+
+// Bezeroaren datuak gordetzeko klasea eta datu basearekin konexioa.
+
+
 namespace ErronkaT3.Modelos
 {
     public static class BezeroDb
@@ -17,6 +21,8 @@ namespace ErronkaT3.Modelos
             using var rd = cmd.ExecuteReader();
             while (rd.Read())
             {
+
+                //bezeroaren datuak ateratzeko kontzulta, datuak ateratzeko bezeroak taulan agertzen dira lehio nagusian
                 lista.Add(new BezeroDatuak
                 {
                     Id = Convert.ToInt32(rd["ID"]),
@@ -33,6 +39,7 @@ namespace ErronkaT3.Modelos
             return lista;
         }
 
+        //metodoa bezero berria gehitzeko datu basean, bezeroaren datuak gordetzen dira
         public static int Gehitu(BezeroDatuak b)
         {
             using var kon = new OracleConnection(Konexioa);

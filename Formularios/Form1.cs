@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using ErronkaT3.Modelos;
 using ErronkaT3;
 
+//lehio nagusia, bezeroak erregistratu eta eskaerak egin ditzake, idazkaritzatik bidalitako mezuak jaso eta langileek eskaerak egiten dituzten ikusi
 namespace ErronkaT3
 {
     public partial class Form1 : Form
@@ -15,6 +16,8 @@ namespace ErronkaT3
         private BlockingCollection<Eskaera> kola = new();
         private ManualResetEventSlim lanaldia = new(false);
         private BindingList<BezeroDatuak> bezeroak = new();
+
+        //hemen daude metodo pribatu guztiak klase honek erabiltzen dituenak, bezeroak erregistratu, eskaerak egin eta langileek eskaerak egiten dituzten ikusi
         public void GehituEskaera(int bezeroId, string bezeroa, string mota, int segundos)
         {
             var e = new Eskaera { BezeroId = bezeroId, Bezeroa = bezeroa, Mota = mota, Segundos = segundos };
@@ -148,6 +151,7 @@ namespace ErronkaT3
         {
 
         }
+        //bezero berria gehitzeko botoia, bezeroaren datuak sartzeko lehioa irekitzen da
         private void button10_Click(object sender, EventArgs e)
         {
             if (!lanaldia.IsSet)
@@ -190,6 +194,7 @@ namespace ErronkaT3
             leihoa.Show(this);
         }
 
+        //lanaldia hasi eta bukatzeko botoiak, langileek eskaerak egiteko aukera ematen du
         private void button2_Click(object sender, EventArgs e)
         {
             lanaldia.Reset();
@@ -203,6 +208,7 @@ namespace ErronkaT3
             btnLanaldiaHasi.Text = "Lanaldia martxan";
         }
 
+        //mezua botoia
         private void button5_Click_1(object sender, EventArgs e)
         {
             if (!lanaldia.IsSet)

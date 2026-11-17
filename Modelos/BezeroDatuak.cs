@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+//Bezeroaren datuak gordetzeko klasea
+
 namespace ErronkaT3.Modelos
 {
    public class BezeroDatuak

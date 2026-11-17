@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 
+
+//bezeroak egin dituen eskaerak gordetzeko klasea, eskaeraren egoera eta langilea gordetzen dira
 namespace ErronkaT3.Modelos
 {
     public class Eskaera : INotifyPropertyChanged

@@ -1,3 +1,6 @@
+
+
+//java programaren karpetaren kokapena (kanpinak.jar, lib\ojdbc11.jar eta KONFIGURAZIOA.txt dauden "dist" karpeta).
 namespace ErronkaT3
 {
     /// <summary>

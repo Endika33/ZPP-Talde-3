@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+//idazkaritza erabiltzen duen lehioa bezeroei mezua bidaltzekoe eta bezeroak jasotzen dute mezua bere Bezerolehioan
 namespace ErronkaT3
 {
         public partial class FormMezua : Form

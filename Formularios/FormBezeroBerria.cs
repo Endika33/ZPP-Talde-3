@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+
+//bezero berria gehitzeko lehioa, bezeroaren datuak sartzeko erabiltzen da
 namespace ErronkaT3
 {
     public partial class FormBezeroBerria : Form

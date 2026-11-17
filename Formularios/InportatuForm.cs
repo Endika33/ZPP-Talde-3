@@ -1,5 +1,8 @@
 ﻿
 using System.Data;
+
+
+//lehio bat, Java programaren fitxategiak inportatzeko erabiltzen da, kanpinak eta bezeroak inportatzen dira
 namespace ErronkaT3
 {
    

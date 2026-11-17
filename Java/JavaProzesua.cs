@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Text;
 
+// <summary>Java programaren prozesua exekutatzeko eta bere irteera-kodea itzultzeko.</summary>
 namespace ErronkaT3
 {
     /// <summary>Java programaren emaitza: irteera-kodea eta idatzitako testua.</summary>

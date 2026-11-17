@@ -2,7 +2,7 @@
 
 namespace ErronkaT3
 {
-    /// <summary>"Esportatu" leihoa: probintzia eta herria aukeratu eta Java programarekin CSV eta XML sortzen ditu.</summary>
+    //datu-baseko kanpinak esportatzeko lehioa, aukeratutako probintzia eta herriko kanpinak esportatzen dira
     public partial class EsportatuForm : Form
     {
         private List<Herria> herriak = new();
@@ -148,7 +148,7 @@ namespace ErronkaT3
                 switch (emaitza.IrteeraKodea)
                 {
                     case JavaProzesua.Ondo:
-                        // El Java genera los dos formatos: se elimina el que no se ha elegido
+                      
                         try
                         {
                             if (formatua == 1)

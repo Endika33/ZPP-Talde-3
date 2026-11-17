@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+
+//bezeroak ikusten duen lehioa, emendik esakerak egin ditzake eta idazkaritzatik bidalitako mezuak jaso
 namespace ErronkaT3
 {
     public partial class BezeroLehioa : Form

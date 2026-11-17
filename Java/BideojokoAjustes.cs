@@ -1,6 +1,8 @@
 using System.ComponentModel;
 using System.Diagnostics;
 
+
+//hemendik ejekutatzen da bideojokoa, Unity bidez sortutako Camping2.exe, eta erabiltzaileak aukeratu dezake non dagoen bideojokoaren .exe fitxategia
 namespace ErronkaT3
 {
     /// <summary>
@@ -56,9 +58,7 @@ namespace ErronkaT3
             catch (UnauthorizedAccessException) { }
         }
 
-        /// <summary>
-        /// Jokoa abiarazten du. .exe-a aurkitzen ez bada, erabiltzaileari aukeratzeko eskatzen dio.
-        /// </summary>
+       
         public static void Abiarazi(IWin32Window? jabea)
         {
             string? exe = Aurkitu();
