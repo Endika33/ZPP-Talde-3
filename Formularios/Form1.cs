@@ -127,8 +127,9 @@ namespace ErronkaT3
 
         private void InportatuB_Click(object? sender, EventArgs e)
         {
-            using var leihoa = new InportatuForm();
-            leihoa.ShowDialog(this);
+            using var leihoa = new InportatuForm(); leihoa.ShowDialog(this); 
+            // inportazioa ondo amaitu bada, taula datu-baseko datuekin berritzen da
+            if (leihoa.InportazioaAmaituta) BezeroakKargatu();
         }
 
         private void BideojokoaB_Click(object? sender, EventArgs e)
